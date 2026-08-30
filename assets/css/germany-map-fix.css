@@ -1,0 +1,134 @@
+/* StudentBnB Germany — map alignment shared across desktop, tablet and mobile. */
+.country-market-map{
+  width:100%;
+  max-width:none;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  margin-top:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  overflow:visible!important;
+  isolation:auto;
+  display:block!important;
+}
+.country-market-map::before{display:none!important}
+.market-map-top{padding:0 4px 4px}
+.market-map-canvas{
+  display:block!important;
+  width:100%;
+  height:auto!important;
+  min-height:0!important;
+  padding:8px 0 16px!important;
+  overflow:visible!important;
+}
+.market-map-visual{
+  position:relative;
+  width:min(100%,650px)!important;
+  height:auto!important;
+  min-height:0!important;
+  max-width:650px!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  margin:0 auto;
+  overflow:visible!important;
+  background:#fff;
+  isolation:isolate;
+}
+.market-map-image{
+  position:static!important;
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  filter:none!important;
+  user-select:none;
+}
+.market-map-visual::after{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  z-index:3;
+  pointer-events:none;
+  background:
+    linear-gradient(to right,#fff 0,rgba(255,255,255,.97) 1%,rgba(255,255,255,.58) 4%,transparent 10%,transparent 90%,rgba(255,255,255,.58) 96%,rgba(255,255,255,.97) 99%,#fff 100%),
+    linear-gradient(to bottom,#fff 0,rgba(255,255,255,.96) 1%,rgba(255,255,255,.5) 4%,transparent 9%,transparent 91%,rgba(255,255,255,.5) 96%,rgba(255,255,255,.96) 99%,#fff 100%);
+}
+.market-map-note{margin-top:2px}
+.value-strip{clear:both!important}
+
+.map-city-marker{
+  display:block!important;
+  position:absolute;
+  left:var(--x);
+  top:var(--y);
+  width:1px;
+  height:1px;
+  transform:translate(-50%,-50%);
+  z-index:6;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0;
+  box-shadow:none!important;
+  outline:0;
+  overflow:visible;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.map-city-marker::after{display:none!important}
+.map-city-marker span{
+  display:block!important;
+  position:absolute;
+  top:50%;
+  left:8px;
+  transform:translateY(-50%);
+  padding:4px 7px;
+  border:0;
+  border-radius:7px;
+  background:rgba(255,255,255,.96);
+  color:#171717;
+  box-shadow:0 4px 12px rgba(0,0,0,.14);
+  font-size:10.5px;
+  font-weight:850;
+  white-space:nowrap;
+  line-height:1.05;
+  pointer-events:auto;
+  cursor:pointer;
+}
+.map-city-marker.label-left span{left:auto;right:8px}
+.map-city-marker:focus-visible span,.map-city-marker:hover span{background:#ffc400}
+
+@media(max-width:1050px){
+  .market-map-visual{width:min(100%,620px)!important;max-width:620px!important}
+  .map-city-marker span{font-size:9px;padding:4px 6px}
+}
+@media(max-width:820px){
+  .country-market-map{max-width:700px;margin:12px auto 0}
+  .market-map-top{padding-inline:0}
+  .market-map-canvas{padding:8px 0 16px!important}
+  .market-map-visual{width:min(90%,560px)!important;max-width:560px!important}
+  .map-city-marker span{font-size:8px;padding:5px 7px;left:6px}
+  .map-city-marker.label-left span{left:auto;right:6px}
+}
+@media(max-width:590px){
+  .country-market-map{padding:0!important;margin:6px auto 0!important;width:100%!important}
+  .market-map-top{padding-inline:0}
+  .market-map-canvas{padding:4px 0 18px!important}
+  .market-map-visual{width:84%!important;max-width:520px!important;margin:0 auto!important}
+  .market-map-image{width:100%!important;height:auto!important}
+  .market-map-note{display:none!important}
+  .value-strip{margin-top:10px!important;position:relative!important;z-index:1!important}
+  .map-city-marker span{font-size:8px;padding:6px 8px;max-width:92px;overflow:hidden;text-overflow:ellipsis;left:5px}
+  .map-city-marker.label-left span{left:auto;right:5px}
+}
+@media(max-width:390px){
+  .market-map-visual{width:88%!important}
+  .map-city-marker span{font-size:7.5px;padding:5px 6px;max-width:82px}
+}
