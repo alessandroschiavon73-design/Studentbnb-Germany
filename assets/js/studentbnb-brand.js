@@ -10,3 +10,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   const hero=document.querySelector('.home-hero .hero-copy');if(hero){document.title='StudentBnB — Erst testen, dann entscheiden';const h=hero.querySelector('h1'),p=hero.querySelector(':scope > p');hero.querySelectorAll('.studentbnb-tagline,.studentbnb-duration-options').forEach(e=>e.remove());if(h)h.innerHTML='Erst die Menschen,<br><span>dann das Zimmer.</span>';if(p)p.textContent='Eine Woche, zwei Wochen oder einen Monat, um Wohnung und Menschen kennenzulernen, bevor du dich entscheidest.'}
   let c=document.querySelector('link[rel="canonical"]');if(!c){c=document.createElement('link');c.rel='canonical';document.head.appendChild(c)}c.href=base+(location.pathname==='/'?'':location.pathname.replace(/^\//,''))+location.search;const og=document.querySelector('meta[property="og:site_name"]');if(og)og.content='StudentBnB — Erst testen, dann entscheiden';const intl=document.querySelector('.footer-international > strong');if(intl)intl.textContent='Für längere Aufenthalte: CasaStudent';const copy=document.querySelector('.footer-bottom span:first-child');if(copy)copy.textContent='© 2026 StudentBnB';const login=document.querySelector('#login-title');if(login)login.textContent='Bei StudentBnB anmelden';const f=document.querySelector('.site-footer .container')||document.querySelector('footer');if(f&&!f.querySelector('.casastudent-family')){const b=document.createElement('div');b.className='casastudent-family';b.innerHTML='StudentBnB ist für temporäre Aufenthalte in der studentischen Gemeinschaft. Für ein längerfristiges Zuhause besuche <a href="https://casastudent.de/">CasaStudent ↗</a>.';f.appendChild(b)}
 });
+
+(function(){
+  const apply=()=>{
+    const canonical=document.querySelector('link[rel="canonical"]')?.href||location.href;
+    const description=document.querySelector('meta[name="description"]')?.content||'';
+    let schema=document.querySelector('#studentbnb-webpage-schema');
+    if(!schema){schema=document.createElement('script');schema.id='studentbnb-webpage-schema';schema.type='application/ld+json';document.head.appendChild(schema);}
+    schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':'WebPage',name:document.title,url:canonical,description,inLanguage:document.documentElement.lang||'de-DE'});
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(apply,0));else setTimeout(apply,0);
+})();
